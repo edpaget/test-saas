@@ -1,0 +1,81 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import FormField from "../components/FormField.astro";
+import Button from "../components/Button.astro";
+---
+
+<MarketingLayout title="Login">
+  <section class="flex min-h-[60vh] items-center justify-center px-6 py-20">
+    <div class="w-full max-w-md">
+      <h1 class="mb-2 text-center text-3xl font-bold text-gray-900">Welcome back</h1>
+      <p class="mb-8 text-center text-gray-600">Sign in to your FlowDesk account</p>
+
+      <form id="login-form" class="space-y-5">
+        <FormField label="Name" name="name" placeholder="Jane Doe" required />
+        <FormField label="Email" name="email" type="email" placeholder="jane@example.com" required />
+        <div class="pt-2">
+          <Button variant="primary" size="lg" class="w-full">Sign In</Button>
+        </div>
+      </form>
+
+      <div id="logged-in" class="hidden text-center">
+        <div class="mb-6 rounded-lg border border-green-200 bg-green-50 p-4">
+          <p class="text-sm text-green-800">
+            Signed in as <strong id="display-name"></strong> (<span id="display-email"></span>)
+          </p>
+        </div>
+        <button
+          id="logout-btn"
+          class="text-sm font-medium text-brand-600 hover:text-brand-700"
+        >
+          Sign out
+        </button>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>
+
+<script>
+  const form = document.getElementById("login-form") as HTMLFormElement;
+  const loggedIn = document.getElementById("logged-in")!;
+  const displayName = document.getElementById("display-name")!;
+  const displayEmail = document.getElementById("display-email")!;
+  const logoutBtn = document.getElementById("logout-btn")!;
+
+  function showLoggedIn(name: string, email: string) {
+    form.classList.add("hidden");
+    loggedIn.classList.remove("hidden");
+    displayName.textContent = name;
+    displayEmail.textContent = email;
+  }
+
+  function showForm() {
+    form.classList.remove("hidden");
+    loggedIn.classList.add("hidden");
+  }
+
+  // Check for existing session
+  const stored = localStorage.getItem("flowdesk-user");
+  if (stored) {
+    const { name, email } = JSON.parse(stored);
+    showLoggedIn(name, email);
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get("name") as string;
+    const email = data.get("email") as string;
+
+    localStorage.setItem("flowdesk-user", JSON.stringify({ name, email }));
+    window.umami?.identify({ name, email });
+    window.umami?.track("login", { name, email });
+
+    showLoggedIn(name, email);
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("flowdesk-user");
+    showForm();
+  });
+</script>

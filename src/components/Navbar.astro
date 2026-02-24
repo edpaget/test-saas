@@ -33,6 +33,17 @@ const currentPath = Astro.url.pathname;
       >
         Get Started
       </a>
+      <a
+        id="nav-login"
+        href={url("/login")}
+        class="text-sm font-medium text-gray-600 transition-colors hover:text-brand-600"
+      >
+        Login
+      </a>
+      <span
+        id="nav-user"
+        class="hidden text-sm font-medium text-brand-600"
+      ></span>
     </div>
     <button
       id="mobile-menu-btn"
@@ -60,6 +71,17 @@ const currentPath = Astro.url.pathname;
     >
       Get Started
     </a>
+    <a
+      id="mobile-nav-login"
+      href={url("/login")}
+      class="block py-2 text-sm font-medium text-gray-600 hover:text-brand-600"
+    >
+      Login
+    </a>
+    <span
+      id="mobile-nav-user"
+      class="hidden block py-2 text-sm font-medium text-brand-600"
+    ></span>
   </div>
 </nav>
 
@@ -67,4 +89,28 @@ const currentPath = Astro.url.pathname;
   const btn = document.getElementById("mobile-menu-btn");
   const menu = document.getElementById("mobile-menu");
   btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+
+  // Show logged-in user in nav and re-identify on each page load
+  const stored = localStorage.getItem("flowdesk-user");
+  if (stored) {
+    const { name, email } = JSON.parse(stored);
+
+    const loginLink = document.getElementById("nav-login");
+    const userSpan = document.getElementById("nav-user");
+    const mobileLoginLink = document.getElementById("mobile-nav-login");
+    const mobileUserSpan = document.getElementById("mobile-nav-user");
+
+    if (loginLink && userSpan) {
+      loginLink.classList.add("hidden");
+      userSpan.classList.remove("hidden");
+      userSpan.textContent = name;
+    }
+    if (mobileLoginLink && mobileUserSpan) {
+      mobileLoginLink.classList.add("hidden");
+      mobileUserSpan.classList.remove("hidden");
+      mobileUserSpan.textContent = name;
+    }
+
+    window.umami?.identify({ name, email });
+  }
 </script>
