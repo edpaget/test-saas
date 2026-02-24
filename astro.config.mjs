@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://edpaget.github.io',
+  base: '/flowdesk-demo',
   vite: {
     plugins: [tailwindcss()],
   },
