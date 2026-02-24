@@ -1,9 +1,11 @@
 ---
+import { url } from "../lib/url";
+
 const navLinks = [
-  { href: "/features", label: "Features" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: url("/features"), label: "Features" },
+  { href: url("/pricing"), label: "Pricing" },
+  { href: url("/about"), label: "About" },
+  { href: url("/contact"), label: "Contact" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -11,7 +13,7 @@ const currentPath = Astro.url.pathname;
 
 <nav class="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-    <a href="/" class="text-xl font-bold text-brand-600">FlowDesk</a>
+    <a href={url("/")} class="text-xl font-bold text-brand-600">FlowDesk</a>
     <div class="hidden items-center gap-8 md:flex">
       {navLinks.map((link) => (
         <a
@@ -25,7 +27,7 @@ const currentPath = Astro.url.pathname;
         </a>
       ))}
       <a
-        href="/pricing"
+        href={url("/pricing")}
         class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-700"
         data-umami-event="nav-get-started-click"
       >
@@ -52,7 +54,7 @@ const currentPath = Astro.url.pathname;
       </a>
     ))}
     <a
-      href="/pricing"
+      href={url("/pricing")}
       class="mt-2 block rounded-lg bg-brand-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-brand-700"
       data-umami-event="nav-get-started-click"
     >

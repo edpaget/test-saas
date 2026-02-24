@@ -1,4 +1,6 @@
 ---
+import { url } from "../lib/url";
+
 interface Props {
   href?: string;
   variant?: "primary" | "secondary" | "accent";
@@ -24,9 +26,10 @@ const sizeClasses = {
 };
 
 const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className ?? ""}`;
+const resolvedHref = href ? url(href) : undefined;
 const Tag = href ? "a" : "button";
 ---
 
-<Tag href={href} class={classes} {...rest}>
+<Tag href={resolvedHref} class={classes} {...rest}>
   <slot />
 </Tag>
