@@ -1,0 +1,86 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import Hero from "../components/Hero.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import Button from "../components/Button.astro";
+---
+
+<MarketingLayout title="Home">
+  <Hero />
+
+  <!-- Features overview -->
+  <section class="mx-auto max-w-7xl px-6 py-24">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-gray-900">Everything you need to ship faster</h2>
+      <p class="mt-4 text-lg text-gray-500">Powerful features, simple interface. No learning curve.</p>
+    </div>
+    <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <FeatureCard
+        icon="📋"
+        title="Smart Boards"
+        description="Kanban, list, and calendar views with drag-and-drop simplicity. Customize workflows to fit your team."
+      />
+      <FeatureCard
+        icon="⚡"
+        title="Automations"
+        description="Eliminate repetitive tasks with rule-based automations. Set it once, let FlowDesk handle the rest."
+      />
+      <FeatureCard
+        icon="👥"
+        title="Real-Time Collaboration"
+        description="See changes live, comment on tasks, and @mention teammates. Stay in sync without switching tools."
+      />
+      <FeatureCard
+        icon="📊"
+        title="Built-in Analytics"
+        description="Track velocity, burndown, and bottlenecks with automatic reporting dashboards."
+      />
+      <FeatureCard
+        icon="🔗"
+        title="Integrations"
+        description="Connect with Slack, GitHub, Figma, and 100+ other tools your team already uses."
+      />
+      <FeatureCard
+        icon="🔒"
+        title="Enterprise Security"
+        description="SOC 2 compliant, SSO support, role-based access controls, and audit logging."
+      />
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section class="bg-gray-50 py-24">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="text-center text-3xl font-bold text-gray-900">Loved by teams everywhere</h2>
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        <Testimonial
+          quote="FlowDesk replaced three tools for us. Our team ships 2x faster now."
+          author="Sarah Chen"
+          role="VP Engineering, TechCorp"
+        />
+        <Testimonial
+          quote="The automations alone save us 10 hours a week. Game changer."
+          author="Marcus Johnson"
+          role="Project Lead, DesignStudio"
+        />
+        <Testimonial
+          quote="Finally a PM tool that doesn't require a PhD to set up."
+          author="Elena Rodriguez"
+          role="Founder, StartupLabs"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto max-w-7xl px-6 py-24 text-center">
+    <h2 class="text-3xl font-bold text-gray-900">Ready to get started?</h2>
+    <p class="mt-4 text-lg text-gray-500">Join thousands of teams already using FlowDesk.</p>
+    <div class="mt-8">
+      <Button href="/pricing" size="lg" variant="accent" data-umami-event="home-bottom-cta-click">
+        View Pricing
+      </Button>
+    </div>
+  </section>
+</MarketingLayout>

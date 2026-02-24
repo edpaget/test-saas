@@ -1,0 +1,31 @@
+---
+interface Props {
+  name: string;
+  slug: string;
+  price: number;
+}
+
+const { name, slug, price } = Astro.props;
+---
+
+<aside class="rounded-xl border border-gray-200 bg-gray-50 p-6">
+  <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-500">Order Summary</h3>
+  <div class="mt-4">
+    <p class="text-lg font-bold text-gray-900">{name} Plan</p>
+    <p class="text-sm text-gray-500">Billed monthly</p>
+  </div>
+  <div class="mt-6 border-t border-gray-200 pt-4">
+    <div class="flex items-center justify-between">
+      <span class="text-sm text-gray-600">Subtotal</span>
+      <span class="text-sm font-medium text-gray-900">${price}.00</span>
+    </div>
+    <div class="mt-2 flex items-center justify-between">
+      <span class="text-sm text-gray-600">Tax</span>
+      <span class="text-sm font-medium text-gray-900">$0.00</span>
+    </div>
+    <div class="mt-4 flex items-center justify-between border-t border-gray-200 pt-4">
+      <span class="text-base font-semibold text-gray-900">Total</span>
+      <span class="text-base font-bold text-gray-900">${price}.00/mo</span>
+    </div>
+  </div>
+</aside>

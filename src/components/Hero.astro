@@ -1,0 +1,28 @@
+---
+import Button from "./Button.astro";
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-brand-50 via-white to-accent-600/5">
+  <div class="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+    <div class="mx-auto max-w-3xl">
+      <span class="inline-block rounded-full bg-brand-100 px-4 py-1.5 text-sm font-medium text-brand-700">
+        Now in public beta
+      </span>
+      <h1 class="mt-6 text-5xl font-bold tracking-tight text-gray-900 lg:text-6xl">
+        Project management that <span class="text-brand-600">flows</span>
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-gray-600">
+        FlowDesk helps teams organize, track, and ship projects faster.
+        Intuitive boards, real-time collaboration, and powerful automations — all in one place.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <Button href="/pricing" size="lg" variant="accent" data-umami-event="hero-cta-click">
+          Start Free Trial
+        </Button>
+        <Button href="/features" size="lg" variant="secondary" data-umami-event="hero-features-click">
+          See Features
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

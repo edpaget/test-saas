@@ -1,0 +1,55 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  name: string;
+  slug: string;
+  price: number;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+}
+
+const { name, slug, price, description, features, highlighted = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex flex-col rounded-2xl border bg-white p-8",
+    highlighted
+      ? "scale-105 border-brand-200 ring-2 ring-brand-500 shadow-lg"
+      : "border-gray-200 shadow-sm",
+  ]}
+>
+  {highlighted && (
+    <span class="mb-4 inline-block self-start rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">
+      Most Popular
+    </span>
+  )}
+  <h3 class="text-xl font-bold text-gray-900">{name}</h3>
+  <p class="mt-2 text-sm text-gray-500">{description}</p>
+  <div class="mt-6">
+    <span class="text-4xl font-bold text-gray-900">${price}</span>
+    <span class="text-sm text-gray-500">/month</span>
+  </div>
+  <ul class="mt-8 flex-1 space-y-3">
+    {features.map((f) => (
+      <li class="flex items-start gap-2 text-sm text-gray-600">
+        <svg class="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        {f}
+      </li>
+    ))}
+  </ul>
+  <Button
+    href={`/checkout/${slug}/plan`}
+    variant={highlighted ? "accent" : "primary"}
+    size="lg"
+    class="mt-8 w-full"
+    data-umami-event="pricing-select-plan"
+    data-umami-event-plan={slug}
+  >
+    Choose {name}
+  </Button>
+</div>

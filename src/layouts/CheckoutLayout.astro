@@ -1,0 +1,31 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import CheckoutStepper from "../components/CheckoutStepper.astro";
+import PlanSummary from "../components/PlanSummary.astro";
+
+interface Props {
+  title: string;
+  planName: string;
+  planSlug: string;
+  planPrice: number;
+  currentStep: 1 | 2 | 3;
+}
+
+const { title, planName, planSlug, planPrice, currentStep } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <Navbar />
+  <main class="mx-auto max-w-7xl px-6 py-12">
+    <CheckoutStepper currentStep={currentStep} />
+    <div class="grid gap-12 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <slot />
+      </div>
+      <div>
+        <PlanSummary name={planName} slug={planSlug} price={planPrice} />
+      </div>
+    </div>
+  </main>
+</BaseLayout>

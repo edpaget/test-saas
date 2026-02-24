@@ -1,0 +1,77 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import Button from "../components/Button.astro";
+---
+
+<MarketingLayout title="About" description="The story behind FlowDesk.">
+  <section class="mx-auto max-w-7xl px-6 py-24">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="text-4xl font-bold text-gray-900">Our Story</h1>
+      <div class="mt-8 space-y-6 text-gray-600 leading-relaxed">
+        <p>
+          FlowDesk was born in 2023 out of frustration. Our founders — a designer, an engineer, and a product manager — were
+          tired of juggling five different tools just to keep their small team aligned.
+        </p>
+        <p>
+          Existing project management tools were either too simple (sticky notes on a wall) or too complex
+          (enterprise software that needed a consultant to set up). There had to be a middle ground.
+        </p>
+        <p>
+          So they built FlowDesk: a tool that's powerful enough for complex projects but simple enough to start
+          using on day one. No training required. No 50-page onboarding guide.
+        </p>
+        <p>
+          Today, FlowDesk is used by over 12,000 teams worldwide — from two-person startups to Fortune 500 companies.
+          We're a fully remote team of 45 people spread across 12 countries, and we use FlowDesk every day to build FlowDesk.
+        </p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="mx-auto mt-20 max-w-3xl">
+      <h2 class="text-2xl font-bold text-gray-900">Our Values</h2>
+      <div class="mt-8 grid gap-8 sm:grid-cols-2">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900">Simplicity First</h3>
+          <p class="mt-2 text-sm text-gray-500">Every feature must earn its place. We remove complexity, not add it.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900">Ship Every Day</h3>
+          <p class="mt-2 text-sm text-gray-500">Small, frequent improvements beat big, rare releases. We deploy multiple times a day.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900">Trust by Default</h3>
+          <p class="mt-2 text-sm text-gray-500">We trust our team and our users. Transparency is our default setting.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900">Customer Obsession</h3>
+          <p class="mt-2 text-sm text-gray-500">Every decision starts with "How does this help our users?" If it doesn't, we don't build it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team stats -->
+    <div class="mx-auto mt-20 max-w-3xl">
+      <div class="grid gap-8 rounded-2xl bg-brand-50 p-8 sm:grid-cols-3 text-center">
+        <div>
+          <p class="text-3xl font-bold text-brand-600">12,000+</p>
+          <p class="mt-1 text-sm text-gray-500">Teams worldwide</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-brand-600">45</p>
+          <p class="mt-1 text-sm text-gray-500">Team members</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-brand-600">12</p>
+          <p class="mt-1 text-sm text-gray-500">Countries</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 text-center">
+      <Button href="/contact" size="lg" variant="primary" data-umami-event="about-cta-click">
+        Get in Touch
+      </Button>
+    </div>
+  </section>
+</MarketingLayout>

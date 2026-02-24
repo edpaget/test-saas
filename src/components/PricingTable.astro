@@ -1,0 +1,55 @@
+---
+import PricingCard from "./PricingCard.astro";
+
+const plans = [
+  {
+    name: "Individual",
+    slug: "individual",
+    price: 9,
+    description: "Perfect for freelancers and solo creators.",
+    features: [
+      "Up to 5 projects",
+      "Basic boards & lists",
+      "1 GB file storage",
+      "Email support",
+      "Mobile app access",
+    ],
+  },
+  {
+    name: "Small Business",
+    slug: "small-business",
+    price: 29,
+    description: "Great for growing teams up to 20 people.",
+    features: [
+      "Unlimited projects",
+      "Advanced boards, timelines & calendars",
+      "10 GB file storage",
+      "Priority email & chat support",
+      "Team automations",
+      "Guest access",
+    ],
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    slug: "enterprise",
+    price: 99,
+    description: "For large organizations with complex needs.",
+    features: [
+      "Everything in Small Business",
+      "Unlimited storage",
+      "SSO & SAML authentication",
+      "Advanced security & audit logs",
+      "Dedicated account manager",
+      "Custom integrations",
+      "99.9% SLA uptime guarantee",
+    ],
+  },
+];
+---
+
+<div class="grid gap-8 md:grid-cols-3 md:items-start">
+  {plans.map((plan) => (
+    <PricingCard {...plan} />
+  ))}
+</div>

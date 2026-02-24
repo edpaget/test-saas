@@ -1,0 +1,62 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import Button from "../components/Button.astro";
+---
+
+<MarketingLayout title="Features" description="Discover everything FlowDesk can do for your team.">
+  <section class="mx-auto max-w-7xl px-6 py-24">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold text-gray-900">Built for how teams actually work</h1>
+      <p class="mt-4 text-lg text-gray-500">Every feature designed to help you ship faster, together.</p>
+    </div>
+
+    <!-- Project management -->
+    <div class="mt-20">
+      <h2 class="text-2xl font-bold text-gray-900">Project Management</h2>
+      <p class="mt-2 text-gray-500">Flexible views and workflows that adapt to your process.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <FeatureCard icon="📋" title="Kanban Boards" description="Visualize work flowing through stages with drag-and-drop cards. Customize columns for any workflow." />
+        <FeatureCard icon="📅" title="Timeline View" description="Plan and track deadlines with interactive Gantt-style timelines. Spot dependencies at a glance." />
+        <FeatureCard icon="📆" title="Calendar View" description="See all tasks and milestones on a calendar. Sync with Google Calendar or Outlook." />
+        <FeatureCard icon="📝" title="List View" description="A structured, spreadsheet-like view for detailed task management and bulk editing." />
+        <FeatureCard icon="🏷️" title="Custom Fields" description="Add text, numbers, dropdowns, and date fields to track the data that matters to you." />
+        <FeatureCard icon="📂" title="Templates" description="Create reusable project templates to standardize processes and onboard new teams quickly." />
+      </div>
+    </div>
+
+    <!-- Collaboration -->
+    <div class="mt-20">
+      <h2 class="text-2xl font-bold text-gray-900">Collaboration</h2>
+      <p class="mt-2 text-gray-500">Work together in real time without leaving FlowDesk.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <FeatureCard icon="💬" title="Task Comments" description="Discuss tasks in context with threaded comments. Attach files and @mention teammates." />
+        <FeatureCard icon="👥" title="Real-Time Updates" description="See changes as they happen. No refresh needed. Multiple cursors for collaborative editing." />
+        <FeatureCard icon="🔔" title="Smart Notifications" description="Get notified about what matters. Mute the noise. Customize per project or channel." />
+        <FeatureCard icon="👤" title="Guest Access" description="Invite clients and contractors with limited, scoped access to specific projects." />
+      </div>
+    </div>
+
+    <!-- Automation & integrations -->
+    <div class="mt-20">
+      <h2 class="text-2xl font-bold text-gray-900">Automation & Integrations</h2>
+      <p class="mt-2 text-gray-500">Automate the tedious stuff. Connect your favorite tools.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <FeatureCard icon="⚡" title="Rule-Based Automations" description="When X happens, do Y. Move cards, assign owners, send notifications — automatically." />
+        <FeatureCard icon="🔗" title="100+ Integrations" description="Slack, GitHub, Figma, Jira, Notion, Google Drive, and more. Two-click setup." />
+        <FeatureCard icon="🔌" title="API & Webhooks" description="Build custom integrations with our REST API and real-time webhook events." />
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-24 text-center">
+      <h2 class="text-2xl font-bold text-gray-900">See it in action</h2>
+      <p class="mt-2 text-gray-500">Start your free trial today — no credit card required.</p>
+      <div class="mt-6">
+        <Button href="/pricing" size="lg" variant="accent" data-umami-event="features-cta-click">
+          Get Started Free
+        </Button>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>

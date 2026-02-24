@@ -1,0 +1,40 @@
+---
+import CheckoutLayout from "../../../layouts/CheckoutLayout.astro";
+import FormField from "../../../components/FormField.astro";
+import Button from "../../../components/Button.astro";
+---
+
+<CheckoutLayout title="Payment" planName="Individual" planSlug="individual" planPrice={9} currentStep={3}>
+  <h1 class="text-2xl font-bold text-gray-900">Payment Details</h1>
+  <p class="mt-2 text-gray-500">Enter your payment information to start your 14-day free trial.</p>
+
+  <form class="mt-8 space-y-6" onsubmit="event.preventDefault()">
+    <FormField label="Card Number" name="cardNumber" placeholder="4242 4242 4242 4242" required />
+    <div class="grid gap-6 sm:grid-cols-2">
+      <FormField label="Expiry Date" name="expiry" placeholder="MM/YY" required />
+      <FormField label="CVC" name="cvc" placeholder="123" required />
+    </div>
+    <FormField label="Name on Card" name="cardName" placeholder="Jane Doe" required />
+    <FormField label="Billing Address" name="address" placeholder="123 Main St, City, State" required />
+
+    <div class="rounded-lg bg-brand-50 p-4 text-sm text-brand-700">
+      You won't be charged today. Your 14-day free trial starts immediately.
+    </div>
+
+    <div class="flex gap-4">
+      <Button href="/checkout/individual/account" variant="secondary">Back</Button>
+      <Button
+        href="/checkout/success?plan=individual"
+        variant="accent"
+        data-umami-event="checkout-submit-payment"
+        data-umami-event-plan="individual"
+      >
+        Start Free Trial
+      </Button>
+    </div>
+  </form>
+</CheckoutLayout>
+
+<script>
+  window.umami?.track("checkout-view-payment", { plan: "individual" });
+</script>

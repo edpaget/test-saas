@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Button from "../../components/Button.astro";
+---
+
+<BaseLayout title="Welcome to FlowDesk!">
+  <Navbar />
+  <main class="mx-auto max-w-7xl px-6 py-24">
+    <div class="mx-auto max-w-lg text-center">
+      <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+        <svg class="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="mt-6 text-3xl font-bold text-gray-900">You're all set!</h1>
+      <p class="mt-4 text-lg text-gray-500">
+        Your 14-day free trial has started. Check your email for login instructions.
+      </p>
+      <p id="plan-message" class="mt-2 text-sm text-gray-400"></p>
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <Button href="/" variant="primary" size="lg">Go to Homepage</Button>
+        <Button href="/features" variant="secondary" size="lg">Explore Features</Button>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get("plan") || "unknown";
+
+  const planNames: Record<string, string> = {
+    individual: "Individual",
+    "small-business": "Small Business",
+    enterprise: "Enterprise",
+  };
+
+  const el = document.getElementById("plan-message");
+  if (el && planNames[plan]) {
+    el.textContent = `You selected the ${planNames[plan]} plan.`;
+  }
+
+  window.umami?.track("checkout-complete", { plan });
+</script>

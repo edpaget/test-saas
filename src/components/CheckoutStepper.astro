@@ -1,0 +1,53 @@
+---
+interface Props {
+  currentStep: 1 | 2 | 3;
+}
+
+const { currentStep } = Astro.props;
+
+const steps = [
+  { number: 1, label: "Review Plan" },
+  { number: 2, label: "Account" },
+  { number: 3, label: "Payment" },
+];
+---
+
+<nav aria-label="Checkout progress" class="mb-8">
+  <ol class="flex items-center gap-2">
+    {steps.map((step, i) => (
+      <>
+        <li class="flex items-center gap-2">
+          <span
+            class:list={[
+              "flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold",
+              step.number < currentStep
+                ? "bg-brand-600 text-white"
+                : step.number === currentStep
+                  ? "bg-brand-600 text-white ring-2 ring-brand-200 ring-offset-2"
+                  : "bg-gray-100 text-gray-400",
+            ]}
+          >
+            {step.number < currentStep ? (
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            ) : (
+              step.number
+            )}
+          </span>
+          <span
+            class:list={[
+              "hidden text-sm font-medium sm:inline",
+              step.number <= currentStep ? "text-gray-900" : "text-gray-400",
+            ]}
+          >
+            {step.label}
+          </span>
+        </li>
+        {i < steps.length - 1 && (
+          <li aria-hidden="true" class="h-px flex-1 bg-gray-200" />
+        )}
+      </>
+    ))}
+  </ol>
+</nav>
